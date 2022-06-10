@@ -1,0 +1,15 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+<html>
+    <body>
+        <h1>Administradores de la Plataforma</h1>
+        <form action="/verificacion_admin" method="POST">
+            <h1>Inicio de Sesion</h1>
+            <input type="text" name="admin_user" placeholder="Usuario" required=""/>
+            <input type="password" name="admin_password" placeholder="Contraseña" required=""/>
+            <button type="submit">Ingresar</button>
+        </form>
+    </body>
+</html>
+{%endblock%}

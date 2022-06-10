@@ -1,0 +1,15 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+<html>
+    <body>
+        <h1>Plataforma de reservas de la ETec</h1>
+        <form action="/verificacion" method="POST">
+            <h1>Inicio de Sesion</h1>
+            <input type="email" name="teacher_email" placeholder="E-mail" required/>
+            <input type="password" name="teacher_password" placeholder="Contraseña" required/>
+            <button type="submit">ingresar</button>
+        </form>
+    </body>
+</html>
+{%endblock%}

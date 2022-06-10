@@ -1,0 +1,17 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+<html>
+    <body>
+        <h1>Plataforma de reservas de la ETec</h1>
+        <form action="/add_user" method="POST">
+            <h1>Registro</h1>
+            <input type="text" name="teacher_name" placeholder="Nombre completo" required/>
+            <input type="text" name="teacher_user" placeholder="usuario" required />
+            <input type="email" name="teacher_email" placeholder="E-mail" required/>
+            <input type="password" name="teacher_password" placeholder="Contraseña" required/>
+            <button type="submit">Registrarse</button>
+        </form>
+    </body>
+</html>
+{%endblock%}
