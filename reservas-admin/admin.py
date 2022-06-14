@@ -32,9 +32,13 @@ def verificacion():
         else:
             print("llegue")
             return render_template('perfiladmin.html')
+#ir a aula+
+@app.route('/irAula')
+def irAula():
+    return render_template('perfiladmin.html')
 
 #Crear un aula
-@app.route('/add_course', methods=['POST'])
+@app.route('/add_course', methods=['POST', 'GET'])
 def add_course():
     if request.method == 'POST':
         course = request.form['course_name']
