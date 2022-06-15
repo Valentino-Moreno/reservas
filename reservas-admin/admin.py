@@ -30,12 +30,11 @@ def verificacion():
         if usuario_existente <= 0:
             return render_template('alertaa.html')
         else:
-            print("llegue")
             return render_template('perfiladmin.html')
 #ir a aula+
 @app.route('/irAula')
 def irAula():
-    return render_template('perfiladmin.html')
+    return render_template('aulas.html')
 
 #Crear un aula
 @app.route('/add_course', methods=['POST', 'GET'])
@@ -48,6 +47,24 @@ def add_course():
         cur.execute("INSERT INTO course (course_name, course_capacity, pc_availables) VALUES (%s,%s,%s)", (course, capacity, pcs))
         mysql.connection.commit()
         return render_template('perfiladmin.html')
+
+#Crear un materia
+@app.route('/add_subject', methods=['POST', 'GET'])
+def add_subject():
+    if request.method == 'POST':
+        materia = request.form['subject_name']
+        prioridad = request.form['subject_priority']
+        profesor = request.form['idteacher']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO subject (subject_name, subject_priority, idteacher) VALUES (%s,%s,%s)", (materia, prioridad, profesor))
+        mysql.connection.commit()
+        return render_template('perfiladmin.html')
+
+#Ir a materias
+@app.route('/irMateria')
+def irMateria():
+    return render_template('materias.html')
+
 
 
 

@@ -1,38 +1,9 @@
-{%extends 'layout.html'%}
+{%extends 'base.html'%}
 {%block body%}
 
 <html>
     <body>
-        <h1>Estas en un perfil de Admin</h1>
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/irAula">Aulas</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-primary" href="#" role="button">Materias</a>
-          </li>
-        </ul>
-          <div class="container">
-            <div class="row justify-content-start">
-              <div class="col-4">
-                <form action="/add_course" method="POST">
-                  <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre del Aula" name="course_name">
-                  </div>
-                  <div class="mb-3">
-                      <input type="number" class="form-control" placeholder="Capacidad del Aula" name="course_capacity">
-                  </div>
-                  <div class="mb-3">
-                      <input type="number" class="form-control" placeholder="PC disponibles del Aula" name="pc_availables">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Crear Aula</button>
-                </form>
-              </div>
-              <div class="col-4">
-                One of two columns
-              </div>
-            </div>
-          
+        <h1>Estas en un perfil de Admin</h1>          
     </body>
 </html>
 {%endblock%}
