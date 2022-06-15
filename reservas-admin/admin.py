@@ -63,9 +63,15 @@ def add_subject():
 #Ir a materias
 @app.route('/irMateria')
 def irMateria():
-    return render_template('materias.html')
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM subject')
+    data = cur.fetchall()
+    print(data)
+    return render_template('materias.html', subjects = data)
 
-
+#Borrar Materias
+#
+#
 
 
 if __name__ == "__main__":

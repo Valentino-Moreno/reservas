@@ -27,22 +27,21 @@
           <thead>
             <tr>
               <td>ID</td>
-              <td>Curso</td>
-              <td>Capacidad</td>
-              <td>PC disponibles</td>
+              <td>Materia</td>
+              <td>Prioridad</td>
+              <td>Profesor</td>
               <td>Operations</td>
             </tr>
           </thead>
           <tbody>
-            {% for course in courses %}
+            {% for subject in subjects %}
             <tr>
-              <td>{{course.0}}</td>
-              <td>{{course.1}}</td>
-              <td>{{course.2}}</td>
-              <td>{{course.3}}</td>
+              <td>{{subject.0}}</td>
+              <td>{{subject.1}}</td>
+              <td>{{subject.2}}</td>
+              <td>{{subject.3}}</td>
               <td>
-                <a href="/edit/{{contact.0}}" class="btn btn-secondary">edit</a>
-                <a href="/delete/{{contact.0}}" class="btn btn-danger btn-delete">delete</a>
+                <a href="/delete/{{subject.0}}" class="btn btn-danger btn-sm btn-delete">delete</a>
               </td>
             </tr>
             {% endfor %}
