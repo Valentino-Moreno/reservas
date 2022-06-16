@@ -61,7 +61,7 @@ def add_subject():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO subject (subject_name, subject_priority, idteacher) VALUES (%s,%s,%s)", (materia, prioridad, profesor))
         mysql.connection.commit()
-        return render_template('perfiladmin.html')
+        return redirect(url_for('irMateria'))
 
 #Ir a materias
 @app.route('/irMateria')
@@ -74,11 +74,11 @@ def irMateria():
 
 #Borrar Materias
 @app.route('/deleteMaterias/<string:idsubject>', methods=['POST','GET'])
-def deleteMaterias():
+def deleteMaterias(idsubject):
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM subject WHERE idsubject={0}'.format(idsubject))
     mysql.connection.commit()
-    return render_template('materias.html')
+    return redirect(url_for('irMateria'))
 
 
 if __name__ == "__main__":
