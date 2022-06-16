@@ -20,7 +20,6 @@ def Index():
 #Inicio admin
 @app.route('/verificacion_admin', methods=['GET', 'POST'])
 def verificacion():
-    print("llegue")
     if request.method == 'POST':
         user = request.form['admin_user']
         password = request.form['admin_password']
@@ -31,10 +30,14 @@ def verificacion():
             return render_template('alertaa.html')
         else:
             return render_template('perfiladmin.html')
-#ir a aula+
+#Ir a aula+
 @app.route('/irAula')
 def irAula():
-    return render_template('aulas.html')
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM course')
+    data = cur.fetchall()
+    print(data)
+    return render_template('aulas.html', aulas = data)
 
 #Crear un aula
 @app.route('/add_course', methods=['POST', 'GET'])
@@ -70,8 +73,12 @@ def irMateria():
     return render_template('materias.html', subjects = data)
 
 #Borrar Materias
-#
-#
+@app.route('/deleteMaterias/<string:idsubject>', methods=['POST','GET'])
+def deleteMaterias():
+    cur = mysql.connection.cursor()
+    cur.execute('DELETE FROM subject WHERE idsubject={0}'.format(idsubject))
+    mysql.connection.commit()
+    return render_template('materias.html')
 
 
 if __name__ == "__main__":
