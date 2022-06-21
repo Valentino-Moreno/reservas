@@ -51,6 +51,14 @@ def add_course():
         mysql.connection.commit()
         return render_template('perfiladmin.html')
 
+#Borrar Materias
+@app.route('/deleteAula/<string:idcourse>', methods=['POST','GET'])
+def deleteAula(idcourse):
+    cur = mysql.connection.cursor()
+    cur.execute('DELETE FROM course WHERE idcourse={0}'.format(idcourse))
+    mysql.connection.commit()
+    return redirect(url_for('irAula'))
+
 #Crear un materia
 @app.route('/add_subject', methods=['POST', 'GET'])
 def add_subject():
@@ -69,8 +77,10 @@ def irMateria():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM subject')
     data = cur.fetchall()
+    cur.execute('SELECT * FROM teacher')
+    tea = cur.fetchall()
     print(data)
-    return render_template('materias.html', subjects = data)
+    return render_template('materias.html', subjects = data, profesores = tea)
 
 #Borrar Materias
 @app.route('/deleteMaterias/<string:idsubject>', methods=['POST','GET'])
