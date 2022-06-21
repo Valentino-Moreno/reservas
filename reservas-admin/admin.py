@@ -51,7 +51,7 @@ def add_course():
         mysql.connection.commit()
         return render_template('perfiladmin.html')
 
-#Borrar Materias
+#Borrar Aulas
 @app.route('/deleteAula/<string:idcourse>', methods=['POST','GET'])
 def deleteAula(idcourse):
     cur = mysql.connection.cursor()
@@ -67,7 +67,10 @@ def add_subject():
         prioridad = request.form['subject_priority']
         profesor = request.form['idteacher']
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO subject (subject_name, subject_priority, idteacher) VALUES (%s,%s,%s)", (materia, prioridad, profesor))
+        cur.execute("SELECT teacher_name FROM teacher WHERE idteacher = '" + profesor + '"')
+        global nomb
+        nomb = cur.fetchall()
+        cur.execute("INSERT INTO subject (subject_name, subject_priority, idteacher, teacher_name) VALUES (%s,%s,%s,%s)", (materia, prioridad, profesor,nomb))
         mysql.connection.commit()
         return redirect(url_for('irMateria'))
 
@@ -79,7 +82,11 @@ def irMateria():
     data = cur.fetchall()
     cur.execute('SELECT * FROM teacher')
     tea = cur.fetchall()
+    #cur.execute('SELECT teacher_name FROM teacher T JOIN subject S ON T.idteacher = S.idteacher')
+    #test =  cur.fetchall()
     print(data)
+    #cur.execute("SELECT teacher_name FROM teacher WHERE idteacher = '" + profesor + '"')
+    #nomb = cur.fetchall()
     return render_template('materias.html', subjects = data, profesores = tea)
 
 #Borrar Materias

@@ -21,7 +21,7 @@
           </select>
         </div>
         <div class="mb-3">
-          <select class="form-select form-select-lg px-4" name="subject_priority" aria-label=".form-select-lg example">
+          <select class="form-select form-select-lg px-4" name="idteacher" aria-label=".form-select-lg example">
             <option selected>Profesor a Cargo</option>
             {% for profesor in profesores %}
             <option value="{{profesor.0}}">{{profesor.1}}</option>
@@ -40,7 +40,8 @@
               <td>Materia</td>
               <td>Prioridad</td>
               <td>Profesor</td>
-              <td>Operations</td>
+              <td>name</td>
+              <td>op</td>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +51,7 @@
               <td>{{subject.1}}</td>
               <td>{{subject.2}}</td>
               <td>{{subject.3}}</td>
+              <td>{{subject.4}}</td>
               <td>
                 <a href="/deleteMaterias/{{subject.0}}" class="btn btn-danger btn-sm btn-delete">delete</a>
               </td>
