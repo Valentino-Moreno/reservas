@@ -5,10 +5,20 @@
     <body>
         <h1>Plataforma de reservas de la ETec</h1>
         <form action="/verificacion" method="POST">
-            <h1>Inicio de Sesion</h1>
-            <input type="email" name="teacher_email" placeholder="E-mail" required/>
-            <input type="password" name="teacher_password" placeholder="Contraseña" required/>
-            <button type="submit">ingresar</button>
+            <h2>Inicio de Sesion</h2>
+            <div class="row g-3">
+                <div class="col">
+                  <input type="email" class="form-control" placeholder="E-mail" name="teacher_email">
+                </div></div>
+                <div class="row g-3">
+                <div class="col">
+                  <input type="password" class="form-control" placeholder="Contraseña" name="teacher_password">
+                </div>
+            </div>                <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+            <div class="row g-3 py-5 px-5">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
         </form>
     </body>
 </html>

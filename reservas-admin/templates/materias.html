@@ -13,7 +13,7 @@
           <input type="text" class="form-control" placeholder="Nombre de la Materia" name="subject_name">
         </div>
         <div class="mb-3">
-          <select class="form-select form-select-lg px-2" name="subject_priority" aria-label=".form-select-lg example">
+          <select class="form-select form-select-lg px-3" name="subject_priority" aria-label=".form-select-lg example">
             <option selected>Seleccione la Prioridad</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -32,7 +32,7 @@
       </form>
     </div>
     <div class="col-8">
-      <div class="col-md-7">
+      <div class="col-md-11">
         <table class="table table-striped table-hover table-bordered table-sm bg-white">
           <thead>
             <tr>
@@ -40,8 +40,7 @@
               <td>Materia</td>
               <td>Prioridad</td>
               <td>Profesor</td>
-              <td>name</td>
-              <td>op</td>
+              <td>Operaciones</td>
             </tr>
           </thead>
           <tbody>
@@ -50,8 +49,7 @@
               <td>{{subject.0}}</td>
               <td>{{subject.1}}</td>
               <td>{{subject.2}}</td>
-              <td>{{subject.3}}</td>
-              <td>{{subject.4}}</td>
+              <td>{{subject.5}}</td>
               <td>
                 <a href="/deleteMaterias/{{subject.0}}" class="btn btn-danger btn-sm btn-delete">delete</a>
               </td>
