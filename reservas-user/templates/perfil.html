@@ -3,7 +3,7 @@
 
 <html>
   <body>
-    <h1 class="d-flex justify-content-center">Plataforma de reservas de la ETec perfil de {{contacto}}</h1>
+    <h1 class="d-flex justify-content-center">Plataforma de reservas de la ETec perfil de {{usuario.1}}</h1>
     <div class="container">
       <div class="row align-items-start">
         <!-- Formulario para hacer reservas -->
@@ -14,15 +14,15 @@
               <div class="p-2"><select class="form-select form-select-lg px-3" name="subject_priority" aria-label=".form-select-lg example">
                 <option selected>Curso a reservar</option>
                 {%for curso in cursos%}
-                <option value="{{curso.0}}">{{curso}}</option>
+                <option value="{{curso.0}}">{{curso.1}}</option>
                 {%endfor%}
                 
               </select></div>
               <div class="p-2"><select class="form-select form-select-lg px-2" name="subject_priority" aria-label=".form-select-lg example">
                 <option selected>Materia que reserva</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                {%for materia in materias%}
+                <option value="{{materia.0}}">{{materia.1}}</option>
+                {%endfor%}
               </select></div>
               <div class="p-2"><input class="px-2" type="date" name="" placeholder="Introduzca la fecha"></div>
               <div class="p-2"><select class="form-select form-select-lg px-3" name="subject_priority" aria-label=".form-select-lg example">

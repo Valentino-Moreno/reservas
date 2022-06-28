@@ -51,22 +51,17 @@ def verificacion():
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM teacher WHERE teacher_email =' + '"' + email + '"' + "AND teacher_password =" + '"' + password + '"')
         usuario_existente = cur.rowcount
-         #toma dato de los cursos
-        cur.execute('SELECT * FROM course')
-        data = cur.fetchall()
-        #toma dato de los materias
-        cur.execute('SELECT * FROM subject')
-        subjects = cur.fetchall()
         if usuario_existente <= 0:
             return render_template('alertaa.html')
         else:
             cur.execute('SELECT * FROM teacher WHERE teacher_email=' + '"' + email + '"')
-            #global sesion
             data = cur.fetchone()
-            global contacto 
-            contacto = data[1]
-            print(contacto)
-            return render_template('perfil.html', cursos=data, materias=subjects)
+            cur.execute('SELECT * FROM course')
+            data2 = cur.fetchall()
+            cur.execute('SELECT * FROM subject WHERE idteacher=' + '"' + str(data[0]) + '"')
+            data3 = cur.fetchall()
+            print(data3)
+            return render_template('perfil.html', usuario = data, cursos=data2, materias=data3)
 
 #Renderiza la plantilla con los datos de perfil 
 @app.route('/perfil', methods=['GET', 'POST'])
@@ -85,7 +80,7 @@ def reservar():
     hora = request.form['reservation_hour']
     cur.execute("INSERT INTO reservation(idcourse, idsubject, reservation_date, reservation_hour) VALUES(%s,%s,%s,%s)",(curso,materia,dia,hora))
     mysql.connection.commit()
-    print(data)
+    
     return render_template('perfil.html')
 
     
