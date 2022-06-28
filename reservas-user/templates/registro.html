@@ -3,10 +3,10 @@
 
 <html>
     <body>
-        <h1>Plataforma de reservas de la ETec</h1>
-        <form action="/add_user" method="POST">
-            <h2>Registro</h1>
-            <div class="row g-3">
+        <h1 class="d-flex justify-content-center">Plataforma de reservas de la ETec</h1>
+        <div class="d-flex justify-content-center"><form action="/add_user" method="POST">
+            <h2 class="d-flex justify-content-center">Registro</h1>
+            <div>
                 <div class="col">
                   <input type="text" class="form-control" placeholder="Nombre completo" name="teacher_name">
                 </div>
@@ -14,7 +14,7 @@
                   <input type="text" class="form-control" placeholder="Usuario" name="teacher_user">
                 </div>
               </div>
-              <div class="row g-3">
+              <div>
                 <div class="col">
                   <input type="text" class="form-control" placeholder="E-mail" name="teacher_email">
                 </div>
@@ -22,10 +22,10 @@
                   <input type="password" class="form-control" placeholder="Contraseña" name="teacher_password">
                 </div>
               </div>
-              <div class="row g-3 py-3 px-3">
+              <div class="d-flex justify-content-center py-3 px-3">
                 <button type="submit" class="btn btn-primary">Registrarse</button>
               </div>
-        </form>
+        </form></div>
     </body>
 </html>
 {%endblock%}

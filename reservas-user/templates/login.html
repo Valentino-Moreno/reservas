@@ -3,23 +3,26 @@
 
 <html>
     <body>
-        <h1>Plataforma de reservas de la ETec</h1>
-        <form action="/verificacion" method="POST">
-            <h2>Inicio de Sesion</h2>
+        <div class="d-flex justify-content-center"><form action="/verificacion" method="POST">
+          <div class="row g-3">
+            <div class="col">
+              <h2>Inicio de Sesion</h2>
+            </div></div>
             <div class="row g-3">
                 <div class="col">
                   <input type="email" class="form-control" placeholder="E-mail" name="teacher_email">
                 </div></div>
-                <div class="row g-3">
+            <div class="row g-3">
                 <div class="col">
                   <input type="password" class="form-control" placeholder="Contraseña" name="teacher_password">
                 </div>
-            </div>                <button type="submit" class="btn btn-primary">Ingresar</button>
-        </div>
-            <div class="row g-3 py-5 px-5">
-                <button type="submit" class="btn btn-primary">Ingresar</button>
             </div>
+        </div>
+        <div class="d-flex justify-content-center py-2"><button type="submit" class="btn btn-primary btn-lg">Ingresar</button></div>
         </form>
+        
+
+        
     </body>
 </html>
 {%endblock%}

@@ -3,8 +3,53 @@
 
 <html>
   <body>
-    <h1>Plataforma de reservas de la ETec</h1>
-    <h2>Este es tu perfil {{contatcto}}</h2>
+    <h1 class="d-flex justify-content-center">Plataforma de reservas de la ETec perfil de {{contacto}}</h1>
+    <div class="container">
+      <div class="row align-items-start">
+        <!-- Formulario para hacer reservas -->
+        <div class="col">
+          <form action="/reservar" method="POST">
+            <h3>Hacer reserva</h3>
+            <div class="d-flex flex-column mb-3">
+              <div class="p-2"><select class="form-select form-select-lg px-3" name="subject_priority" aria-label=".form-select-lg example">
+                <option selected>Curso a reservar</option>
+                {%for curso in cursos%}
+                <option value="{{curso.0}}">{{curso}}</option>
+                {%endfor%}
+                
+              </select></div>
+              <div class="p-2"><select class="form-select form-select-lg px-2" name="subject_priority" aria-label=".form-select-lg example">
+                <option selected>Materia que reserva</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></div>
+              <div class="p-2"><input class="px-2" type="date" name="" placeholder="Introduzca la fecha"></div>
+              <div class="p-2"><select class="form-select form-select-lg px-3" name="subject_priority" aria-label=".form-select-lg example">
+                <option selected>Modulo a reservar</option>
+                <option value="07:45">7:45-9:10</option>
+                <option value="09:10">9:10-10:35</option>
+                <option value="10:35">10:35-12:10</option>
+                <option value="12:10">12:10-13:00</option>
+                <option value="14:00">14:00-15:20</option>
+                <option value="15:20">15:20-16:20</option>
+              </select></div>
+              
+            </div>
+            <div class="px-2"><button type="submit" class="btn btn-primary">Crear Materia</button></div>
+
+          </form>
+        </div>
+        <!-- Ver las reservas del dia -->
+        <div class="col">
+          One of three columns
+        </div>
+        <!-- Ir al gestor de mis reservas -->
+        <div class="row"><div class="col-auto">
+          <a href="#" type="button" class="btn btn-info">Mis Reservas</a>
+        </div></div>
+      </div>
+    
     
   </body>
 </html>
