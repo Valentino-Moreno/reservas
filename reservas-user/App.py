@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request,redirect,url_for, flash
+from traceback import print_tb
+from flask import Flask, render_template, request,redirect,url_for, flash, make_response
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -60,8 +61,9 @@ def verificacion():
             data2 = cur.fetchall()
             cur.execute('SELECT * FROM subject WHERE idteacher=' + '"' + str(data[0]) + '"')
             data3 = cur.fetchall()
-            print(data3)
-            return render_template('perfil.html', usuario = data, cursos=data2, materias=data3)
+            cur.execute(' SELECT * FROM reservation')
+            data4=cur.fetchall()
+            return render_template('perfil.html', usuario = data, cursos=data2, materias=data3, reservas=data4)
 
 #Renderiza la plantilla con los datos de perfil 
 @app.route('/perfil', methods=['GET', 'POST'])
@@ -71,16 +73,13 @@ def perfil():
 #Hacer una reserva
 @app.route('/reservar', methods=['GET','POST'])
 def reservar():
-    cur = mysql.connection.cursor()
-   
-    #
     curso = request.form['idcourse']
     materia = request.form['idsubject']
     dia = request.form['reservation_date']
     hora = request.form['reservation_hour']
-    cur.execute("INSERT INTO reservation(idcourse, idsubject, reservation_date, reservation_hour) VALUES(%s,%s,%s,%s)",(curso,materia,dia,hora))
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO reservation (idcourse, idsubject, reservation_date, reservation_hour) VALUES (%s,%s,%s,%s)",(curso,materia,dia,hora))
     mysql.connection.commit()
-    
     return render_template('perfil.html')
 
     
