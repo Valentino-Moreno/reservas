@@ -1,0 +1,5 @@
+Instalar librerias de python
+pip install flask flask-mysqldb
+
+correr el archivo yml, hay que ejecutarlo dentro de la carpeta que esta el archivo docker-compose.yml
+docker-compose up -d
